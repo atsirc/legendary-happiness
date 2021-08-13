@@ -17,14 +17,14 @@ const App = () => {
       text = text.replace(/\r/g, '')
       text = text.replace(/\n([ ]*\n+)+/g, '\n\n')
       const contents = text.match(/(?<=Credits).*?(?=Glossary)/s)[0].split('\n\n')
-      const rules = {}
+      const _rules = {}
       contents.forEach(line => {
          const parts = line.split(' ')
          const rule = parts.shift()
-         rules[rule] = parts.join(' ')
+         _rules[rule] = parts.join(' ')
       })
       delete rules['']
-      setRules(rules)
+      setRules(_rules)
    }
 
    const getText = () => {
@@ -40,7 +40,7 @@ const App = () => {
          .then(text => setupRules(text))
       })
    }
-   useEffect(getText, [url])
+   useEffect(getText, [])
    useEffect(()=>{
       document.getElementById('page-content-wrapper').scrollTo(0,0)
    }, [query])

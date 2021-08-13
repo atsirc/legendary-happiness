@@ -22,7 +22,7 @@ const App = () => {
          const parts = line.split(' ')
          const rule = parts.shift()
          rules[rule] = parts.join(' ')
-         })
+      })
       delete rules['']
       setRules(rules)
    }

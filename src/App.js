@@ -12,7 +12,7 @@ const App = () => {
    const [rules, setRules] = useState({})
    const [query, setQuery] = useState('')
    const [url, setUrl] = useState('https://media.wizards.com/2021/downloads/MagicCompRules%2020210419.txt')
-
+   
    const setupRules= (text) => {
       text = text.replace(/\r/g, '')
       text = text.replace(/\n([ ]*\n+)+/g, '\n\n')
@@ -40,11 +40,12 @@ const App = () => {
          .then(text => setupRules(text))
       })
    }
+
    useEffect(getText, [])
    useEffect(()=>{
       document.getElementById('page-content-wrapper').scrollTo(0,0)
    }, [query])
-
+  
    const filterRules = () => {
       if (query) {
          const results = {}

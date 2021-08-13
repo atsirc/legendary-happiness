@@ -11,7 +11,7 @@ import {HiMenuAlt3} from 'react-icons/hi'
 const App = () => {
    const [rules, setRules] = useState({})
    const [query, setQuery] = useState('')
-   const [url, setUrl] = useState('https://media.wizards.com/2021/downloads/MagicCompRules%2020210712.txt')
+   const [url, setUrl] = useState('https://media.wizards.com/2021/downloads/MagicCompRules%2020210419.txt')
 
    const setupRules= (text) => {
       text = text.replace(/\r/g, '')
@@ -27,7 +27,7 @@ const App = () => {
       setRules(rules)
    }
 
-    const getText = () => {
+   const getText = () => {
       axios.post('http://localhost/php/get_page.php', {'url': url} )
       .then(response => {
             return response.data.result
@@ -40,7 +40,7 @@ const App = () => {
          .then(text => setupRules(text))
       })
    }
-    useEffect(getText, [url])
+   useEffect(getText, [url])
    useEffect(()=>{
       document.getElementById('page-content-wrapper').scrollTo(0,0)
    }, [query])
